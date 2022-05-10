@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="register-container">
+    <h3>Cadastro de Estudantes</h3>
+    <form [formGroup]="comentForm" class="register-form">
+        <div class="form-field">
+            <label class="label-input">Name:</label>
+            <input type="text" formControlName="name" placeholder="Digite o seu nome">
+        </div>
+        <div class="form-field">
+            <label class="label-input">Email:</label>
+            <input type="email" formControlName="email" placeholder="Digite o seu Email">
+        </div>
+        <div class="form-field">
+            <label class="label-input">Password:</label>
+            <input type="password" formControlName="password" placeholder="Digite a sua senha">
+            <span class="error"
+            *ngIf="comentForm.controls.password.errors &&
+            comentForm.controls.password.errors.minlength">
+            A senha deve ter no mínimo 6 caracteres</span>
+        </div>
+        <div class="form-field">
+            <label class="label-input">Coment:</label>
+            <input type="text" formControlName="coment" placeholder="Digite o comentário">
+        </div>
+        <div class="form-field">
+            <label class="label-input">Inclusion date:</label>
+            <input type="text" formControlName="inclusionDate">
+        </div>
+        <div class="action-form">
+            <button
+            class="cadastrarComent"
+            type="submit"
+            [disabled]="comentForm.invalid"
+            (click)="onSubmit()">Salvar</button>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
+
