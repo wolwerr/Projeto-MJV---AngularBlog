@@ -1,47 +1,41 @@
-@import '../../../../../assets/styles/_colors.scss';
-
-app-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 
 .login-container {
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    background-color: #EDEDED;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 4px;
-    box-shadow: 0 4px 8px 0 $cor-box-shadow-padrao;
-    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    h3 {
-        font-weight: 500;
+    width: 450px;
+    height: 450px;
+    background-color: white;
+    position: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0;
+    padding: 16px;
+
+h3 {
+  font-weight: 500;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .form-field {
+      width: 100%;
+      align-items: flex-start;
+      input {
+          width: 100%;
+          font-size: 20px;
+          height: 50px;
+          padding: 10px;
+      }
     }
-    .error {
-        color: $cor-aviso-perigo;
-        font-size: 12px;
-    }
-    .login-form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        .form-field {
-            width: 100%;
-            align-items: flex-start;
-            input {
-                width: 100%;
-                font-size: 20px;
-                height: 50px;
-                padding: 10px;
-            }
-        }
-    }
+
+  }
 }

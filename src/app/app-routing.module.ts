@@ -13,8 +13,8 @@ const routes: Routes = [
     path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'coment', component: ComentComponent},
-    { path: 'coment-details/:id', component: ComentDetailsPageComponent},
-    { path: 'create-student', component: CreateComentPageComponent, canActivate: [AuthGuard] },
+    {path: 'coment-details/:id', component: ComentDetailsPageComponent},
+    {path: 'create-coment', component: CreateComentPageComponent, canActivate: [AuthGuard] },
     {path: 'contato', component: ContatoComponent},
     {path: 'login', component: LoginPageComponent}
 ];

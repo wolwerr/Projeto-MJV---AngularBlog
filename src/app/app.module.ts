@@ -8,6 +8,7 @@ import { LoginModule } from './features/login/login.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ComentsModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
+
+  exports: [RouterModule],
   providers: [
     {
       provide: LOCALE_ID,

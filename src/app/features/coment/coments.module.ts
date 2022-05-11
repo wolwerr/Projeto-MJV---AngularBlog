@@ -8,9 +8,10 @@ import { ComentDetailsPageComponent } from './pages/coment-details-page/coment-d
 import { RouterModule } from '@angular/router';
 import { CreateComentPageComponent } from './pages/create-coment-page/create-coment-page.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-  import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginModule } from '../login/login.module';
+
 
 
 
@@ -35,7 +36,9 @@ import { LoginModule } from '../login/login.module';
     SharedModule,
     RouterModule,
     LoginModule
-  ]
+  ],
+
+  exports: [RouterModule]
 
 
 })
