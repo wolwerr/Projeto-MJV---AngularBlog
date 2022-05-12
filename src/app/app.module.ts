@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
+import { AuthService } from './features/login/pages/login-page/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {RouterModule} from '@angular/router';
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,9 @@
 
     <app-coment [coment]="coment" [card]="false"></app-coment>
-
+    <div class="actions" *ngIf="mostrarBotoes">
+    <button class="btn btn-outline-light w-15" >Alterar</button>
+    <button class="btn btn-outline-light w-15" >Deletar</button>
+  </div>
     <div class="actions">
       <button class="btn btn-outline-light w-15" [routerLink]="['/coment']">Voltar</button>
   </div>

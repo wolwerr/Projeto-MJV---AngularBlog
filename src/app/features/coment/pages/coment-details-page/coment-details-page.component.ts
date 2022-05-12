@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Coment } from '../../models/Coment';
 import { ActivatedRoute } from '@angular/router';
 import { ComentService } from '../../service/Coment.service';
+import { AuthService } from 'src/app/features/login/pages/login-page/auth.service';
 
 @Component({
   selector: 'app-coment-details-page',
@@ -12,9 +13,12 @@ export class ComentDetailsPageComponent implements OnInit {
 
   coment?: Coment;
 
+  mostrarBotoes: boolean = false;
+
   constructor(
     private comentService: ComentService,
-    private activedRoute: ActivatedRoute
+    private activedRoute: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +27,9 @@ export class ComentDetailsPageComponent implements OnInit {
         this.coment
       });
     });
+    this.authService.mostrarBotoesEmitter.subscribe(
+      mostrar => this.mostrarBotoes = mostrar
+    );
   }
 
 }
