@@ -18,15 +18,24 @@ export class LoginPageComponent implements OnInit {
   email?: string
   password?: string
 
-  constructor( private authService: AuthService) { }
+  constructor( private authService: AuthService, private router: Router, private comentService: ComentService) { }
 
   ngOnInit(): void {
   }
 
 
-  authenticate(){
-    console.log(this.email, this.password)
-    this.authService.authenticate(this.email, this.password)
+  authenticate() {
+    const coment = this.comentService.getComentByEmailAndPassword(this.email, this.password);
+    if (!coment) {
+      this.error = true;
+    } else {
+      // delete coment.password;
+
+      sessionStorage.setItem('coment', JSON.stringify(coment));
+
+      this.router.navigateByUrl('coment');
+    }
+
   }
 
 }

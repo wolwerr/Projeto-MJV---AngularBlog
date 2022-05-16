@@ -22,7 +22,7 @@ export class ComentComponent implements OnInit {
     message: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    inclusionDate: new FormControl('')
+    inclusionDate: new FormControl(this.coment.inclusionDate)
   });
 
   listComent: Coment[];
@@ -31,7 +31,8 @@ export class ComentComponent implements OnInit {
   constructor(private comentService: ComentService, private router: Router) { }
 
   ngOnInit(): void {
-    this.findPosts()
+    this.findPosts(),
+    this.comentForm.controls.inclusionDate.disable();
   }
 
   findPosts() {
@@ -46,7 +47,6 @@ export class ComentComponent implements OnInit {
       this.coment.message = formValue.message;
       this.coment.email = formValue.email;
       this.coment.password = formValue.password;
-      this.coment.inclusionDate = formValue.inclusionDate;
       this.comentService.createComent(this.coment).subscribe((result) => {
         alert('Coment sented');
         window.location.reload();

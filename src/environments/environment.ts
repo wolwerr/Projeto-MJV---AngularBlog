@@ -4,10 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrlBackendGet: 'http://localhost:8080/comments',
-  baseUrlBackendPost: 'http://localhost:8080/comment',
-  baseUrlBackendId: 'http://localhost:8080/comment/{Id}',
-  baseUrlBackendLogin: 'http://localhost:8080/comment/login'
+  baseUrlBackend: 'http://localhost:3000/comments',
 };
 
 /*

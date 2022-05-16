@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Coment } from '../models/Coment';
 import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,21 +32,25 @@ export class ComentService {
       inclusionDate: dateToday,
       loggedIn: false
     }
+
+    // const data = { email,
+    //               password:''
+    //             };
   }
   generateNextId(): number {
     throw new Error('Method not implemented.');
   }
 
   getComent() {
-    return this.httpClient.get<Array<Coment>>(environment.baseUrlBackendGet, this.options);
+    return this.httpClient.get<Array<Coment>>(environment.baseUrlBackend, this.options);
   }
 
-  getComentByEmailAndPassword(body: { email: string, password: string}) {
-    return this.httpClient.get<Coment>(`${environment.baseUrlBackendLogin}/`);
+  getComentByEmailAndPassword(email: string, password: string ){
+    return this.httpClient.post('http://localhost:8080/comment/login', (coment) => coment.email === email && coment.password === password);
   }
 
-  getComentById(id: number) {
-    return this.httpClient.get<Coment>(`${environment.baseUrlBackendId}${id}`, this.options);
+  getComentById(id) {
+    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}${id}`, this.options);
   }
 
   getComentByName(name: string) {
@@ -65,14 +70,14 @@ export class ComentService {
   }
 
   createComent(coment: Coment) {
-    return this.httpClient.post(`${environment.baseUrlBackendPost}`, coment);
+    return this.httpClient.post(`${environment.baseUrlBackend}`, coment);
   }
 
   removeComent(id: number) {
-    return this.httpClient.delete<any>(`${environment.baseUrlBackendId}/remove/${id}`, this.options);
+    return this.httpClient.delete<any>(`${environment.baseUrlBackend}/remove/${id}`, this.options);
   }
 
   updateComent(id: number, body: { email: string, name: string }) {
-    return this.httpClient.put<any>(`${environment.baseUrlBackendId}/update/${id}`, body, this.options);
+    return this.httpClient.put<any>(`${environment.baseUrlBackend}/update/${id}`, body, this.options);
   }
 }

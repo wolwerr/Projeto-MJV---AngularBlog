@@ -15,14 +15,14 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  authenticate(email, password){
-    if(email === 'ricardo@dtmm.com.br' && password === '123456'){
-      this.usuarioAutenticado = true;
-      this.mostrarBotoesEmitter.emit(true);
-      this.router.navigate(['/coment']);
-    }else{
-      this.usuarioAutenticado = false;
-      this.mostrarBotoesEmitter.emit(false);
-    }
-  }
+  // authenticate(email, password){
+  //   if(email === 'ricardo@dtmm.com.br' && password === '123456'){
+  //     this.usuarioAutenticado = true;
+  //     this.mostrarBotoesEmitter.emit(true);
+  //     this.router.navigate(['/coment']);
+  //   }else{
+  //     this.usuarioAutenticado = false;
+  //     this.mostrarBotoesEmitter.emit(false);
+  //   }
+  // }
 }

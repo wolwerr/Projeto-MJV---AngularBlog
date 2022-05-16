@@ -23,8 +23,8 @@ export class ComentDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params) => {
-      this.comentService.getComentById(params.id).subscribe(() => {
-        this.coment
+      this.comentService.getComentById(params.id).subscribe((coment) => {
+        this.coment = coment;
       });
     });
     this.authService.mostrarBotoesEmitter.subscribe(
