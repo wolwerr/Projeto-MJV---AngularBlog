@@ -11,7 +11,8 @@
             <p class="error" *ngIf="error">Usuário/senha inválidos, tente novamente!</p>
         </form>
         <button
-            class="primary-button"
+            
+            class="btn btn-outline-light w-100"
             type="button"
             [disabled]="!email || !password"
             (click)="authenticate()">Entrar</button>

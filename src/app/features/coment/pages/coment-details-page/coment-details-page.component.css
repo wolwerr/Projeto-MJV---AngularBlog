@@ -1,5 +1,30 @@
-app-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+
+
+.card{
+  width: 50%;
+  position: center;
+  background-color: black;
+  color: white;
+  margin-top: 100px;
+  margin-block-end: 100px;
+  margin-left: 12cm;
+
 }
+
+atualizar{
+  position: center;
+}
+
+.btn-outline-light.disabled, .btn-outline-light:disabled{
+  margin-top: 15px;
+  margin-block-end: 15px;
+}
+
+.btn:not(:disabled):not(.disabled){
+  margin-top: 15px;
+}
+
+
+
+
+

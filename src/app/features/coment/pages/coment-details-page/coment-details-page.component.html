@@ -1,10 +1,68 @@
 
-    <app-coment [coment]="coment" [card]="false"></app-coment>
-    <div class="actions" *ngIf="mostrarBotoes">
-    <button class="btn btn-outline-light w-15" >Alterar</button>
-    <button class="btn btn-outline-light w-15" >Deletar</button>
-  </div>
-    <div class="actions">
-      <button class="btn btn-outline-light w-15" [routerLink]="['/coment']">Voltar</button>
-  </div>
+        <!-- <hr class="mt-5 mb-5">
+
+        <h3 class="text-center mb-5 text-monospace">Comments</h3>
+        <div class="container">
+          <div class="card mb-4" >
+            <div class="card-header">
+              <h5 class="card-tile">Name: {{coment.name}}</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Coment: {{coment.message}}</p>
+              <p class="card-text">Send Date Comment: {{coment.inclusionDate}}</p>
+              <div class="actions">
+              <button class="btn btn-outline-light w-15" [routerLink]="['/coment']">Voltar</button>
+              <button class="btn btn-outline-light w-15" >Alterar</button>
+              <button class="btn btn-outline-light w-15" >Deletar</button>
+            </div> -->
+
+            <div class="col-md-8">
+            <div class="card" *ngIf="coment && card">
+              <h1>Nome: {{ coment.name }}</h1>
+              <p>Id: {{ coment.id }}</p>
+              <p>Email: {{ coment.email }}</p>
+              <p>Password: {{ coment.password }}</p>
+              <p>Comment: {{ coment.message }}</p>
+              <p>Data do comentário: {{ coment.inclusionDate }}</p>
+              <div class="actions">
+
+                  <button class="error" class="btn btn-outline-light w-15" (click)="remove()">Remover</button>
+                  <button class="btn btn-outline-light w-15" [routerLink]="['/coment']">Voltar</button>
+              </div>
+          </div>
+        </div>
+
+        <div class="atualizar">
+          <div div class="card" *ngIf="coment && card">
+
+              <h3 class="text-center mb-4 text-monospace">Atualizar os dados:</h3>
+
+              <form [formGroup]="editForm" class="register-form">
+                <div class="form-field">
+                <label class="label-input">Name:</label>
+                <input type="text" formControlName="name" id="nome" class="form-control" placeholder="Digite o seu nome">
+              </div>
+              <form [formGroup]="editForm" class="register-form">
+                <div class="form-field">
+                <label class="label-input">Email:</label>
+                <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email" required>
+              </div>
+              <form [formGroup]="editForm" class="register-form">
+                <div class="form-field">
+                <label class="label-input">Password:</label>
+                <input type="text" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password" required>
+              </div>
+              <form [formGroup]="editForm" class="register-form">
+              <div class="form-field">
+                <label class="label-input">Message:</label>
+                <textarea name="mensagem" id="mensagem" cols="30" rows="4" class="form-control" formControlName="message"
+                  placeholder="Digite a sua mensagem"></textarea>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="cadastrarPost" class="btn btn-outline-light w-50" [disabled]="editForm.invalid"  (click)="onSubmit()">Atualizar</button>
+              </div>
+              </form>
+
+
 

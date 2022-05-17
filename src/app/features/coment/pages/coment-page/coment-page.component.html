@@ -9,9 +9,9 @@
           <h5 class="card-titletext-center">Ricardo Luis Machado</h5>
           <p class="card-texttext-center">Fullstack Developer</p>
           <a href="https://github.com/wolwerr" target="_blank"
-          class="btn btn-outline-light d-flex justify-content-center">Github</a>
+          class="btn btn-outline-light w-100">Github</a>
           <a href="https://www.linkedin.com/in/ricardolmachado/" target="_blank"
-          class="btn btn-outline-light d-flex justify-content-center mt-3">Linkedin</a>
+          class="btn btn-outline-light w-100">Linkedin</a>
 
           <hr class="mt-4 mb-4">
 
@@ -38,12 +38,24 @@
         <form [formGroup]="comentForm" class="register-form">
           <div class="form-field">
           <label class="label-input">Email:</label>
-          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email" required>
+          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email">
+          <span class="error"
+          *ngIf="comentForm.controls.email.errors &&
+          comentForm.controls.email.errors.email">
+          Digite um email válido</span>
         </div>
         <form [formGroup]="comentForm" class="register-form">
           <div class="form-field">
           <label class="label-input">Password:</label>
-          <input type="text" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password" required>
+          <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password com 6 digitos">
+          <span class="error"
+          *ngIf="comentForm.controls.password.errors &&
+          comentForm.controls.password.errors.maxlength ">
+          A senha deve ter no máximo 6 caracteres</span>
+          <span class="error"
+          *ngIf="comentForm.controls.password.errors &&
+          comentForm.controls.password.errors.minlength ">
+          A senha deve ter no mínimo 6 caracteres</span>
         </div>
         <form [formGroup]="comentForm" class="register-form">
         <div class="form-field">

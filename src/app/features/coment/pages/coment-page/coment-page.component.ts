@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ComentService } from '../../service/Coment.service';
 import { Coment } from '../../models/Coment';
 import { Router } from '@angular/router';
@@ -20,8 +20,8 @@ export class ComentComponent implements OnInit {
   comentForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     message: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
     inclusionDate: new FormControl(this.coment.inclusionDate)
   });
 
@@ -57,6 +57,7 @@ export class ComentComponent implements OnInit {
         const value = event.target.value;
         const coments = type === 'Id' ? this.comentService.getComentsByFilterId(value) : this.comentService.getComentsByFilterName(value);
       }
+
   };
 
 

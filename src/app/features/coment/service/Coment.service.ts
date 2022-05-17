@@ -50,7 +50,7 @@ export class ComentService {
   }
 
   getComentById(id) {
-    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}${id}`, this.options);
+    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}/${id}`, this.options);
   }
 
   getComentByName(name: string) {
@@ -77,7 +77,7 @@ export class ComentService {
     return this.httpClient.delete<any>(`${environment.baseUrlBackend}/remove/${id}`, this.options);
   }
 
-  updateComent(id: number, body: { email: string, name: string }) {
-    return this.httpClient.put<any>(`${environment.baseUrlBackend}/update/${id}`, body, this.options);
+  updateComent(id: number, coment: Coment) {
+    return this.httpClient.put<any>(`${environment.baseUrlBackend}/update/${id}`, coment, this.options);
   }
 }

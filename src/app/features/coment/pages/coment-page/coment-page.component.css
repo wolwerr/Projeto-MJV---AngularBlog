@@ -4,9 +4,8 @@ background-color:black;
 
 }
 
-.justify-content-center::selection{
+.justify-content-center{
   background-color:black;
-
  }
 
 .d{
@@ -24,4 +23,35 @@ background-color:black;
 
 .text-monospace{
   color: white;
+}
+
+.cadastrarPost
+{
+  padding-top: 15px;
+}
+
+.card-header:first-child{
+  background-color: black;
+  color: white
+}
+
+*, ::after, ::before {
+  color: white;
+}
+
+.btn-outline-light.disabled, .btn-outline-light:disabled{
+  margin-top: 15px;
+}
+
+.btn:not(:disabled):not(.disabled){
+  margin-top: 15px;
+}
+
+textarea.form-control{
+  color: black;
+}
+
+.error {
+  color: red;
+  margin-top: 4px;
 }
