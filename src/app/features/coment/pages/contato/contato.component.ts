@@ -25,7 +25,6 @@ export class ContatoComponent implements OnInit {
     .subscribe(data => console.log(data, "E-mail sented"), error => console.log(error, "Something is wrong"));
     alert("Email sented")
       this.email = new Email();
-      window.location.reload();
   }
 
 }

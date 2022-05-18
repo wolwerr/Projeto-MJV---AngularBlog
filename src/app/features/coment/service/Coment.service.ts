@@ -45,8 +45,8 @@ export class ComentService {
     return this.httpClient.get<Array<Coment>>(environment.baseUrlBackend, this.options);
   }
 
-  getComentByEmailAndPassword(email: string, password: string ){
-    return this.httpClient.post('http://localhost:8080/comment/login', (coment) => coment.email === email && coment.password === password);
+  getComentByEmailAndPassword(email: string, password: string){
+    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}/login/${email}/${password}`)
   }
 
   getComentById(id) {

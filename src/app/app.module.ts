@@ -8,7 +8,7 @@ import { LoginModule } from './features/login/login.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { AuthService } from './features/login/pages/login-page/auth.service';
 
 @NgModule({

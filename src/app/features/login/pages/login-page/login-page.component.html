@@ -1,22 +1,37 @@
 
     <div class="login-container">
         <h3>Bem vindo! Digite seu usuário/senha para acessar o sistema!</h3>
-        <form class="login-form">
-            <div class="form-field">
-                <input type="email" [(ngModel)]="email" placeholder="Digite o Email" name="email" required>
-            </div>
-            <div class="form-field">
-                <input type="password" [(ngModel)]="password" placeholder="Digite a senha" name="password" required>
-            </div>
+        <form [formGroup]="loginForm" class="register-form">
+          <div class="form-field">
+          <label class="label-input">Email:</label>
+          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email">
+          <span class="error"
+          *ngIf="loginForm.controls.email.errors &&
+          loginForm.controls.email.errors.email">
+          Digite um email válido</span>
+        </div>
+        <form [formGroup]="loginForm" class="register-form">
+          <div class="form-field">
+          <label class="label-input">Password:</label>
+          <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password com 6 digitos">
+          <span class="error"
+          *ngIf="loginForm.controls.password.errors &&
+          loginForm.controls.password.errors.maxlength ">
+          A senha deve ter no máximo 6 caracteres</span>
+          <span class="error"
+          *ngIf="loginForm.controls.password.errors &&
+          loginForm.controls.password.errors.minlength ">
+          A senha deve ter no mínimo 6 caracteres</span>
+        </div>
             <p class="error" *ngIf="error">Usuário/senha inválidos, tente novamente!</p>
         </form>
         <button
-            
+
             class="btn btn-outline-light w-100"
             type="button"
-            [disabled]="!email || !password"
+            
             (click)="authenticate()">Entrar</button>
-    </div>
+
 
 
 
