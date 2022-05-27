@@ -2,3 +2,12 @@
 .text-center, .form-group, .mb-5 text-monospace{
   color: white;
 }
+
+.error {
+  color: red;
+  margin-top: 4px;
+}
+
+label{
+  color: white;
+}

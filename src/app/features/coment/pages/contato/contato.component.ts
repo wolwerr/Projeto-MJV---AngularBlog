@@ -36,7 +36,7 @@ export class ContatoComponent implements OnInit {
       this.email.message = formValue.message;
       this.emailService.enviarEmail(this.email).subscribe((result) => {
         alert('Email sented');
-        // window.location.reload();
+        window.location.reload();
       });
     }
 }
