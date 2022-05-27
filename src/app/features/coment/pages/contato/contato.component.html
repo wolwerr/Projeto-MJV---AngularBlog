@@ -3,27 +3,38 @@
 
 
 
-    <div class="form-group">
-      <label for="nome" class="text-monospace">Name</label>
-      <input type="text" name="ownerRef" id="nome" class="form-control" placeholder="Write your name" required >
-    </div>
-    <div class="form-group">
-      <label for="emailFrom" class="text-monospace">Email</label>
-      <input type="email" class="form-control" name="emailFrom" id="Email" placeholder="name@example.com" required >
-    </div>
-    <div class="form-group">
-      <label for="phone" class="text-monospace">Phone</label>
-      <input type="number" class="form-control" name="phone" id="Phone" placeholder="99999999999" required >
-    </div>
-    <div class="form-group">
-      <label for="mensasage" class="text-monospace">Message</label>
-      <textarea class="form-control" id="mensasage" placeholder="Your message" name="mensasage" rows="3" required > </textarea>
-    </div>
-    <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-light w-25" (click)='sendEmail()'>Send</button>
-  </div>
+  <div class="col-md-8">
+    <div>
+      <h3 class="text-center mb-4 text-monospace">Send your comment below:</h3>
 
-</div>
+      <form [formGroup]="emailForm" class="register-form">
+        <div class="form-field">
+        <label class="label-input">Name:</label>
+        <input type="text" formControlName="name" id="nome" class="form-control" placeholder="Digite o seu nome">
+      </div>
+      <form [formGroup]="emailForm" class="register-form">
+        <div class="form-field">
+        <label class="label-input">Email:</label>
+        <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email">
+        <!-- <span class="error"
+        *ngIf="comentForm.controls.email.errors &&
+        comentForm.controls.email.errors.email">
+        Digite um email válido</span> -->
+      </div>
+      <form [formGroup]="emailForm" class="register-form">
+        <div class="form-field">
+        <label class="label-input">Phone:</label>
+        <input type="phone" formControlName="phone" id="phone" class="form-control" placeholder="Digite o seu telefone">
+      </div>
+      <form [formGroup]="emailForm" class="register-form">
+      <div class="form-field">
+        <label class="label-input">Message:</label>
+        <textarea name="message" id="message" cols="30" rows="4" class="form-control" formControlName="message"
+          placeholder="Digite a sua mensagem"></textarea>
+      </div>
 
-
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="cadastrarPost" class="btn btn-outline-light w-50"  (click)="sendEmail()">Publicar</button>
+      </div>
+      </form>
 

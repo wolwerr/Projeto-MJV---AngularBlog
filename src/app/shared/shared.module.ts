@@ -5,7 +5,7 @@ import { NavbarComponent } from '../shared/components/navbar/navbar.component';
 import { CpfPipe } from './pipes/cpf.pipe';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -26,7 +26,8 @@ const pipes = [CpfPipe];
     HttpClientModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     ...components,

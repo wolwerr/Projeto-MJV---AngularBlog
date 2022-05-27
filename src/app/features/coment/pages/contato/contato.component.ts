@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { Email } from '../../models/Email';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,6 +15,13 @@ export class ContatoComponent implements OnInit {
 
   email: Email = new Email;
 
+  emailForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required]),
+  });
+
 
   constructor(private emailService: EmailService) { }
 
@@ -21,10 +29,14 @@ export class ContatoComponent implements OnInit {
   }
 
   sendEmail() {
-    this.emailService.enviarEmail(this.email)
-    .subscribe(data => console.log(data, "E-mail sented"), error => console.log(error, "Something is wrong"));
-    alert("Email sented")
-      this.email = new Email();
-  }
-
+    const formValue = this.emailForm.value;
+      this.email.name = formValue.name;
+      this.email.email = formValue.email;
+      this.email.phone = formValue.phone;
+      this.email.message = formValue.message;
+      this.emailService.enviarEmail(this.email).subscribe((result) => {
+        alert('Email sented');
+        // window.location.reload();
+      });
+    }
 }

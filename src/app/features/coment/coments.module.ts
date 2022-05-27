@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginModule } from '../login/login.module';
+import { ContatoComponent } from './pages/contato/contato.component';
+
 
 
 
@@ -23,6 +25,7 @@ import { LoginModule } from '../login/login.module';
     ComentPageComponent,
     ComentDetailsPageComponent,
     CreateComentPageComponent,
+    ContatoComponent
 
   ],
   schemas: [
