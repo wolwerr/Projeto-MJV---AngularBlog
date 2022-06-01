@@ -42,4 +42,8 @@ h3 {
     }
 
   }
+
+  .btn:not(:disabled):not(.disabled){
+    margin-top: 15px;
+  }
 }

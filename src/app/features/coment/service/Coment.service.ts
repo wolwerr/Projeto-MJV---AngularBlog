@@ -46,7 +46,7 @@ export class ComentService {
   }
 
   getComentByEmailAndPassword(email: string, password: string){
-    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}/login/${email}/${password}`)
+    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}/${email}/${password}`)
   }
 
   getComentById(id) {

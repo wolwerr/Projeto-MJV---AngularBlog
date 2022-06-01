@@ -25,6 +25,11 @@
         <div class="form-field">
         <label class="label-input">Phone:</label>
         <input type="phone" formControlName="phone" id="phone" class="form-control" placeholder="(99) 99999-9999">
+        <span class="error"
+        *ngIf="emailForm.controls.phone.errors &&
+        emailForm.controls.phone.errors.maxlength ">
+        O telefone deve ter no máximo 20 caracteres</span>
+        <span class="error"></span>
       </div>
       <form [formGroup]="emailForm" class="register-form">
       <div class="form-field">

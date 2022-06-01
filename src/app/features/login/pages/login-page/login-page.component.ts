@@ -39,7 +39,7 @@ export class LoginPageComponent implements OnInit {
         if (!comment){
           return(this.error = true);
         }
-        localStorage.setItem('comment', JSON.stringify(comment));
+        localStorage.setItem('coment', JSON.stringify(comment));
         return this.router.navigateByUrl('/coment');
       })
 

@@ -65,8 +65,8 @@ export class ComentDetailsPageComponent implements OnInit {
   editForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     message: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
     inclusionDate: new FormControl(this.coment.inclusionDate)
   });
 

@@ -18,7 +18,7 @@ export class ContatoComponent implements OnInit {
   emailForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     message: new FormControl('', [Validators.required]),
   });
 
