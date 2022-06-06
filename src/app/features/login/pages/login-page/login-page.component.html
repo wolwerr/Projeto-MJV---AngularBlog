@@ -29,8 +29,8 @@
 
             class="btn btn-outline-light w-100"
             type="button"
-            
-            (click)="authenticate()">Entrar</button>
+
+            [disabled]="loginForm.invalid" (click)="authenticate()">Entrar</button>
 
 
 
