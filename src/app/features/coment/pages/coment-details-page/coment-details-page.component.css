@@ -1,18 +1,14 @@
 
 
 .card{
-  width: 50%;
-  position: center;
+  width: 100%;
+  margin-left: 20px;
   background-color: black;
   color: white;
-  margin-top: 100px;
-  margin-block-end: 100px;
-  margin-left: 12cm;
+  }
 
-}
-
-atualizar{
-  position: center;
+.container{
+  box-shadow: 0 4px 8px 0;
 }
 
 .btn-outline-light.disabled, .btn-outline-light:disabled{

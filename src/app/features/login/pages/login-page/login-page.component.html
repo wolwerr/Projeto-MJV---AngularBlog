@@ -1,6 +1,7 @@
 
+    <div class="container">
     <div class="login-container">
-        <h3>Bem vindo! Digite seu usuário/senha para acessar o sistema!</h3>
+        <h3>Bem vindo! Digite seu usuário e senha para acessar o sistema!</h3>
         <form [formGroup]="loginForm" class="register-form">
           <div class="form-field">
           <label class="label-input">Email:</label>
@@ -11,7 +12,6 @@
           Digite um email válido</span>
         </div>
         <form [formGroup]="loginForm" class="register-form">
-          <div class="form-field">
           <label class="label-input">Password:</label>
           <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password com 6 digitos">
           <span class="error"
@@ -22,15 +22,12 @@
           *ngIf="loginForm.controls.password.errors &&
           loginForm.controls.password.errors.minlength ">
           A senha deve ter no mínimo 6 caracteres</span>
-        </div>
             <p class="error" *ngIf="error">Usuário/senha inválidos, tente novamente!</p>
         </form>
-        <button
-
-            class="btn btn-outline-light w-100"
-            type="button"
-
+        <button class="btn btn-outline-light w-50" type="submit"
             [disabled]="loginForm.invalid" (click)="authenticate()">Entrar</button>
+
+
 
 
 

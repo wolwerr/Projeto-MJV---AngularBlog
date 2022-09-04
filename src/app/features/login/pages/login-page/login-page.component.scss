@@ -1,23 +1,21 @@
-
+.container{
+  box-shadow: 0 4px 8px 0;
+}
 .login-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: center;
-    width: 450px;
-    height: 450px;
+    width: 60%;
     background-color: black;
-    position: center;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px 0;
     padding: 16px;
-    margin-top: 80px;
+    margin-top: 30px;
+    margin-left: 30px;
     margin-block-end: 100px;
-    margin-left: 20cm;
     color: white;
 
 h3 {
   font-weight: 500;
+  text-align: center;
 }
 
 .error {
@@ -25,25 +23,24 @@ h3 {
   font-size: 12px;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  .form-field {
-      width: 100%;
-      align-items: flex-start;
-      input {
-          width: 100%;
-          font-size: 20px;
-          height: 50px;
-          padding: 10px;
-      }
-    }
-
-  }
-
   .btn:not(:disabled):not(.disabled){
     margin-top: 15px;
   }
+
+  .btn-outline-light:disabled{
+    margin-top: 15px;
+    position: right;
+  }
+
+  *, ::after, ::before {
+    box-sizing: border-box;
+    width: 100%;
 }
+
+
+}
+
+
+
+
+

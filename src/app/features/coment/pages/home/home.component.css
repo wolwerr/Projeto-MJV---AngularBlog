@@ -1,6 +1,6 @@
 .parallax{
   background-image: url('https://user-images.githubusercontent.com/70382532/138322189-2db8df52-9dcb-40a0-88a8-c365466bd33d.gif');
-  min-height: 500px;
+  min-height: 1000px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,4 +10,5 @@
 .container{
   background-color: black;
   color: white;
+  box-shadow: 0 4px 8px 0;
 }
