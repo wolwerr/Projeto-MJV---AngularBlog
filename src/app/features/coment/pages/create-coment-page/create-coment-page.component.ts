@@ -7,7 +7,7 @@ import { ComentService } from '../../service/Coment.service';
 @Component({
   selector: 'app-create-coment-page',
   templateUrl: './create-coment-page.component.html',
-  styleUrls: ['./create-coment-page.component.scss']
+  styleUrls: ['./create-coment-page.component.css']
 })
 export class CreateComentPageComponent implements OnInit {
 
