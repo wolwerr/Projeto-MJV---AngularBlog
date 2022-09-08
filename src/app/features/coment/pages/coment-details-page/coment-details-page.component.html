@@ -23,12 +23,12 @@
               <form [formGroup]="editForm" class="register-form">
                 <div class="form-field">
                 <label class="label-input">Name:</label>
-                <input type="text" formControlName="name" id="nome" class="form-control" placeholder="Digite o seu nome">
+                <input type="text" formControlName="name" id="nome" class="form-control" value="{{ coment.name }}">
               </div>
               <form [formGroup]="editForm" class="register-form">
                 <div class="form-field">
                 <label class="label-input">Email:</label>
-                <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email" required>
+                <input type="email" formControlName="email" id="email" class="form-control" value="{{ coment.email }}">
                 <span class="error"
                 *ngIf="editForm.controls.email.errors &&
                 editForm.controls.email.errors.email">
@@ -37,7 +37,7 @@
               <form [formGroup]="editForm" class="register-form">
                 <div class="form-field">
                 <label class="label-input">Password:</label>
-                <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password" required>
+                <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password">
                 <span class="error"
                 *ngIf="editForm.controls.password.errors &&
                 editForm.controls.password.errors.maxlength ">

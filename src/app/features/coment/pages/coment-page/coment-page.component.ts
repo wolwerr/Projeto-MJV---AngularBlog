@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ComentService } from '../../service/Coment.service';
 import { Coment } from '../../models/Coment';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-coment-page',
@@ -11,29 +12,28 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ComentComponent implements OnInit {
 
-
   filteredComents: Array<Coment> = [];
 
   coment: Coment = this.comentService.getDefaultComent();
+  comentForm: FormGroup;
 
-
-  comentForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    message: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
-    inclusionDate: new FormControl(this.coment.inclusionDate)
-  });
+  constructor(
+    private comentService: ComentService,
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   listComent: Coment[];
 
-
-  constructor(private comentService: ComentService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.findPosts(),
-    this.comentForm.controls.inclusionDate.disable();
-
+  ngOnInit() {
+    this.findPosts();
+    this.comentForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      message: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      inclusionDate: [Date.now, Validators.required],
+    });
   }
 
   findPosts() {
@@ -49,7 +49,7 @@ export class ComentComponent implements OnInit {
       this.coment.email = formValue.email;
       this.coment.password = formValue.password;
       this.comentService.createComent(this.coment).subscribe((result) => {
-        alert('Coment sented');
+        this.toastr.success('Comment deleted', 'Success');
         window.location.reload();
       });
     }

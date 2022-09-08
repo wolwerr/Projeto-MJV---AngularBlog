@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Coment } from '../../models/Coment';
 import { ComentService } from '../../service/Coment.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-coment-page',
@@ -14,17 +15,18 @@ export class CreateComentPageComponent implements OnInit {
   coments: Coment = this.comentsService.getDefaultComent();
 
 
-  comentForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    coment: new FormControl('', [Validators.required]),
-    inclusionDate: new FormControl(this.coments.inclusionDate),
+  comentForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+    coment: new UntypedFormControl('', [Validators.required]),
+    inclusionDate: new UntypedFormControl(this.coments.inclusionDate),
   });
 
   constructor(
     private comentsService: ComentService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +40,8 @@ export class CreateComentPageComponent implements OnInit {
     this.coments.password = formValue.password;
     this.coments.message = formValue.message;
     this.comentsService.createComent(this.coments);
-    alert('Comentário adicionado com sucesso!');
+    this.toastr.success('Hello world!', 'Toastr fun!');
+    // alert('Comentário adicionado com sucesso!');
     this.router.navigateByUrl('/coments');
   }
 

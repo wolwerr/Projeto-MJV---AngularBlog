@@ -10,6 +10,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule} from '@angular/router';
 import { AuthService } from './features/login/pages/login-page/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { AuthService } from './features/login/pages/login-page/auth.service';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
 
   exports: [RouterModule],

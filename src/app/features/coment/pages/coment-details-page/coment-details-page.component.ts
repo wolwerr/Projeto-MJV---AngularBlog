@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Coment } from '../../models/Coment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ComentService } from '../../service/Coment.service';
 import { AuthService } from 'src/app/features/login/pages/login-page/auth.service';
-import { Router } from '@angular/router';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-coment-details-page',
@@ -28,7 +28,8 @@ export class ComentDetailsPageComponent implements OnInit {
     private comentService: ComentService,
     private activedRoute: ActivatedRoute,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -45,29 +46,20 @@ export class ComentDetailsPageComponent implements OnInit {
   remove() {
     if (this.coment && this.coment.id) this.comentService.removeComent(this.coment.id)
     .subscribe((result) => {
-      alert(result.message);
+      this.toastr.success('Comment deleted', 'Success');
       this.router.navigateByUrl('/coment');
     });
-  }
-
-  update() {
-    if (this.coment && this.coment.id)
-    this.comentService.updateComent(
-      this.coment.id, this.coment)
-      .subscribe(() => {
-        this.router.navigateByUrl('/coment');
-      });
   }
 
   coment: Coment = this.comentService.getDefaultComent();
 
 
-  editForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    message: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
-    inclusionDate: new FormControl(this.coment.inclusionDate)
+  editForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    message: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+    inclusionDate: new UntypedFormControl(this.coment.inclusionDate)
   });
 
   onSubmit() {
@@ -77,7 +69,7 @@ export class ComentDetailsPageComponent implements OnInit {
       this.coment.email = formValue.email;
       this.coment.password = formValue.password;
       this.comentService.updateComent(this.coment.id, this.coment).subscribe((result) => {
-        alert('Coment atualizado');
+        this.toastr.success('Comment updated', 'Success');
         this.router.navigateByUrl('/coment');
       });
     }

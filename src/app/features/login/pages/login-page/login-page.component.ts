@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Coment } from 'src/app/features/coment/models/Coment';
 import { ComentService } from '../../../../features/coment/service/Coment.service';
@@ -27,9 +27,9 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+  loginForm = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
   });
 
 

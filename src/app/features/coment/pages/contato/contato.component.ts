@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { Email } from '../../models/Email';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,11 +15,11 @@ export class ContatoComponent implements OnInit {
 
   email: Email = new Email;
 
-  emailForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-    message: new FormControl('', [Validators.required]),
+  emailForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    phone: new UntypedFormControl('', [Validators.required, Validators.maxLength(20)]),
+    message: new UntypedFormControl('', [Validators.required]),
   });
 
 

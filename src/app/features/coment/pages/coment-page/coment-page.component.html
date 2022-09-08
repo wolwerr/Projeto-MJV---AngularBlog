@@ -50,7 +50,7 @@
           <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password com 6 digitos">
           <span class="error"
           *ngIf="comentForm.controls.password.errors &&
-          comentForm.controls.password.errors.maxlength ">
+          comentForm.controls.password.errors.maxlength && comentForm.controls.password.errors.touched ">
           A senha deve ter no máximo 6 caracteres</span>
           <span class="error"
           *ngIf="comentForm.controls.password.errors &&
