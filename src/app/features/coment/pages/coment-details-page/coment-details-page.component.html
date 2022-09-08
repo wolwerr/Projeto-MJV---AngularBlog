@@ -1,20 +1,4 @@
 
-        <!-- <hr class="mt-5 mb-5">
-
-        <h3 class="text-center mb-5 text-monospace">Comments</h3>
-        <div class="container">
-          <div class="card mb-4" >
-            <div class="card-header">
-              <h5 class="card-tile">Name: {{coment.name}}</h5>
-            </div>
-            <div class="card-body">
-              <p class="card-text">Coment: {{coment.message}}</p>
-              <p class="card-text">Send Date Comment: {{coment.inclusionDate}}</p>
-              <div class="actions">
-              <button class="btn btn-outline-light w-15" [routerLink]="['/coment']">Voltar</button>
-              <button class="btn btn-outline-light w-15" >Alterar</button>
-              <button class="btn btn-outline-light w-15" >Deletar</button>
-            </div> -->
             <div class="container">
             <div class="row mt-5 mb-5">
             <div class="card" *ngIf="coment && card">
@@ -25,12 +9,14 @@
               <p>Comment: {{ coment.message }}</p>
               <p>Data do comentário: {{ coment.inclusionDate }}</p>
               <div class="actions">
-                  <button class="error" class="btn btn-outline-light w-15" (click)="remove()">Remover</button>
-                  <button class="btn btn-outline-light w-15" [routerLink]="['/coment']">Voltar</button>
+                  <button class="error" class="btn btn-outline-light w-15 m-2" (click)="remove()">Remover</button>
+                  <button class="btn btn-outline-light w-15 m-2" [routerLink]="['/coment']">Voltar</button>
               </div>
           </div>
         </div>
-        <div class="atualizar">
+
+
+
           <div class="row mt-5 mb-5">
           <div div class="card" *ngIf="coment && card">
               <h3 class="text-center mb-4 text-monospace">Atualizar os dados:</h3>

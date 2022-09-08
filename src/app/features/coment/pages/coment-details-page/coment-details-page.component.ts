@@ -37,9 +37,9 @@ export class ComentDetailsPageComponent implements OnInit {
         this.coment = coment;
       });
     });
-    this.authService.mostrarBotoesEmitter.subscribe(
-      mostrar => this.mostrarBotoes = mostrar
-    );
+    // this.authService.mostrarBotoesEmitter.subscribe(
+    //   mostrar => this.mostrarBotoes = mostrar
+    // );
   }
 
   remove() {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Coment } from 'src/app/features/coment/models/Coment';
 import { ComentService } from '../../../../features/coment/service/Coment.service';
 import { LoginService } from '../../../coment/service/login.service';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class LoginPageComponent implements OnInit {
   coment: Coment;
   email?: string
   password?: string
+  estaCarregando: boolean;
+  isLogado: boolean = false;
 
 
   constructor( private loginService: LoginService, private router: Router, private comentService: ComentService) { }
@@ -31,14 +34,20 @@ export class LoginPageComponent implements OnInit {
 
 
   authenticate() {
+    this.estaCarregando = true;
     const formValue = this.loginForm.value
     this.loginService.authenticate(
       formValue.email,
       formValue.password
-      ).subscribe((comment) =>{
+      ).pipe(
+        finalize(() => this.estaCarregando = false)
+      )
+      .subscribe((comment) =>{
         if (!comment){
           return(this.error = true);
+
         }
+        localStorage.setItem('isLogado', JSON.stringify(this.isLogado = true));
         localStorage.setItem('coment', JSON.stringify(comment));
         return this.router.navigateByUrl('/coment');
       })

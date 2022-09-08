@@ -33,6 +33,7 @@ export class ComentComponent implements OnInit {
   ngOnInit(): void {
     this.findPosts(),
     this.comentForm.controls.inclusionDate.disable();
+
   }
 
   findPosts() {
@@ -58,6 +59,7 @@ export class ComentComponent implements OnInit {
         const coments = type === 'Id' ? this.comentService.getComentsByFilterId(value) : this.comentService.getComentsByFilterName(value);
       }
 
-  };
-
-
+      logado(){
+        return localStorage.getItem('isLogado') ? true : false;
+      }
+}

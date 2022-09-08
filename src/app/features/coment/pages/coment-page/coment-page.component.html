@@ -80,7 +80,7 @@
             <div class="card-body">
               <p class="card-text">Coment: {{coment.message}}</p>
               <p class="card-text">Send Date Comment: {{coment.inclusionDate}}</p>
-              <button class="btn btn-outline-light w-50" [routerLink]="['/coment-details', coment.id]" >Detalhes</button>
+              <button *ngIf="logado" class="btn btn-outline-light w-50" [routerLink]="['/coment-details', coment.id]" >Detalhes</button>
             </div>
 
           </div>
