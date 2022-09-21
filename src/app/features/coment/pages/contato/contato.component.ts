@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../../service/email.service';
 import { Email } from '../../models/Email';
-import { Router } from '@angular/router';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 

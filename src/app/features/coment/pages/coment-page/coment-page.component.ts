@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComentService } from '../../service/Coment.service';
 import { Coment } from '../../models/Coment';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

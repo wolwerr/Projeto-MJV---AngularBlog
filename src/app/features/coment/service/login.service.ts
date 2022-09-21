@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
+
 import { ComentService } from '../service/Coment.service'
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export class LoginService {
 
 

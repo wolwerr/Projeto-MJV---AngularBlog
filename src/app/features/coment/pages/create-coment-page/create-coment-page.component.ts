@@ -41,7 +41,6 @@ export class CreateComentPageComponent implements OnInit {
     this.coments.message = formValue.message;
     this.comentsService.createComent(this.coments);
     this.toastr.success('Hello world!', 'Toastr fun!');
-    // alert('Comentário adicionado com sucesso!');
     this.router.navigateByUrl('/coments');
   }
 
