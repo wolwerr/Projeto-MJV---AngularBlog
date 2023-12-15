@@ -1,7 +1,7 @@
 export class Email
 {
-  public name: string
-  public email: string
+  public ownerRef: string
+  public emailTo: string
   public phone: number
-  public message: string
+  public text: string
 }

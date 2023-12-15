@@ -29,10 +29,10 @@ export class ContatoComponent implements OnInit {
 
   sendEmail() {
     const formValue = this.emailForm.value;
-      this.email.name = formValue.name;
-      this.email.email = formValue.email;
+      this.email.ownerRef = formValue.name;
+      this.email.emailTo = formValue.email;
       this.email.phone = formValue.phone;
-      this.email.message = formValue.message;
+      this.email.text = formValue.message;
       this.emailService.enviarEmail(this.email).subscribe((result) => {
         alert('Email sented');
         window.location.reload();
