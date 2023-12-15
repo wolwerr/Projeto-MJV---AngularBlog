@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrlBackend: 'https://backspanode.herokuapp.com',
-  baseUrlEmail: 'https://port-email.onrender.com/sending-email'
+  baseUrlEmail: 'https://ms-email-production-6d12.up.railway.app/sending-email'
 };
 
 /*
