@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrlBackend: 'https://backspanode.herokuapp.com'
+  baseUrlBackend: 'https://backspanode.herokuapp.com',
+  baseUrlEmail: 'https://port-email.onrender.com/sending-email'
 };
 
 /*
