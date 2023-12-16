@@ -7,21 +7,18 @@
         </div>
         <div class="card-body">
           <h5 class="card-titletext-center">Ricardo Luis Machado</h5>
-          <p class="card-texttext-center">Fullstack Developer</p>
+          <p class="card-texttext-center">Software Architect</p>
           <a href="https://github.com/wolwerr" target="_blank"
           class="btn btn-outline-light w-100">Github</a>
           <a href="https://www.linkedin.com/in/ricardolmachado/" target="_blank"
           class="btn btn-outline-light w-100">Linkedin</a>
 
-          <hr class="mt-4 mb-4">
-
-          <!-- <div class="search">
-            <h6 class="mb-3 text-monospace text-center">Pesquisar por nome</h6>
-            <input type="text" class="form-control mb-3 w-100" placeholder="Digite o nome" (input)="findComentByFilter($event, 'Name')">
-            <input type="number" class="form-control mb-3 w-100" placeholder="Digite o id do comentário" (input)="findComentByFilter($event, 'Id')">
-        </div> -->
-
-
+          <!-- <hr class="mt-4 mb-4">
+          <div class="search">
+            <h6 class="mb-3 text-monospace text-center">Search by name</h6>
+            <input type="text" class="form-control mb-3 w-100" placeholder="Enter a name" (input)="findComentByFilter($event, 'Name')">
+            <input type="text" class="form-control mb-3 w-100" placeholder="Enter with some word" (input)="findComentByFilter($event, 'Message')">
+        </div>         -->
         </div>
       </div>
     </div>
@@ -30,42 +27,42 @@
       <div>
         <h3 class="text-center mb-4 text-monospace">Send your comment below:</h3>
 
-        <form [formGroup]="comentForm" class="register-form">
+        <form [formGroup]="commentForm" class="register-form">
           <div class="form-field">
           <label class="label-input">Name:</label>
-          <input type="text" formControlName="name" id="nome" class="form-control" placeholder="Digite o seu nome">
+          <input type="text" formControlName="name" id="nome" class="form-control" placeholder="Enter your name">
         </div>
-        <form [formGroup]="comentForm" class="register-form">
+        <form [formGroup]="commentForm" class="register-form">
           <div class="form-field">
           <label class="label-input">Email:</label>
-          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Digite o seu email">
+          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter your email">
           <span class="error"
-          *ngIf="comentForm.controls.email.errors &&
-          comentForm.controls.email.errors.email">
-          Digite um email válido</span>
+          *ngIf="commentForm.controls.email.errors &&
+          commentForm.controls.email.errors.email">
+          Enter a valid email address</span>
         </div>
-        <form [formGroup]="comentForm" class="register-form">
+        <form [formGroup]="commentForm" class="register-form">
           <div class="form-field">
           <label class="label-input">Password:</label>
-          <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password com 6 digitos">
+          <input type="password" formControlName="password" id="password" class="form-control" placeholder="Enter your 6-digit password">
           <span class="error"
-          *ngIf="comentForm.controls.password.errors &&
-          comentForm.controls.password.errors.maxlength && comentForm.controls.password.errors.touched ">
-          A senha deve ter no máximo 6 caracteres</span>
+          *ngIf="commentForm.controls.password.errors &&
+          commentForm.controls.password.errors.maxlength && commentForm.controls.password.errors.touched ">
+          The password must have a maximum of 6 characters</span>
           <span class="error"
-          *ngIf="comentForm.controls.password.errors &&
-          comentForm.controls.password.errors.minlength ">
-          A senha deve ter no mínimo 6 caracteres</span>
+          *ngIf="commentForm.controls.password.errors &&
+          commentForm.controls.password.errors.minlength ">
+          The password must have a maximum of 6 characters</span>
         </div>
-        <form [formGroup]="comentForm" class="register-form">
+        <form [formGroup]="commentForm" class="register-form">
         <div class="form-field">
           <label class="label-input">Message:</label>
           <textarea name="mensagem" id="mensagem" cols="30" rows="4" class="form-control" formControlName="message"
-            placeholder="Digite a sua mensagem"></textarea>
+            placeholder="Enter your message"></textarea>
         </div>
 
         <div class="d-flex justify-content-end">
-          <button type="submit" class="cadastrarPost" class="btn btn-outline-light w-50" [disabled]="comentForm.invalid"  (click)="onSubmit()">Publicar</button>
+          <button type="submit" class="cadastrarPost" class="btn btn-outline-light w-50" [disabled]="commentForm.invalid"  (click)="onSubmit()">Publish</button>
         </div>
         </form>
 
@@ -80,7 +77,7 @@
             <div class="card-body">
               <p class="card-text">Coment: {{coment.message}}</p>
               <p class="card-text">Send Date Comment: {{coment.inclusionDate}}</p>
-              <button *ngIf="logado" class="btn btn-outline-light w-50" [routerLink]="['/coment-details', coment.id]" >Detalhes</button>
+              <button *ngIf="logado" class="btn btn-outline-light w-50" [routerLink]="['/coment-details', coment.id]" >Details</button>
             </div>
 
           </div>

@@ -20,8 +20,10 @@ label{
 
 .btn-outline-light.disabled, .btn-outline-light:disabled{
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .btn:not(:disabled):not(.disabled){
   margin-top: 15px;
+  margin-bottom: 15px;
 }

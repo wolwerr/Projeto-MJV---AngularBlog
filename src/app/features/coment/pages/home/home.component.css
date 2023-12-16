@@ -1,7 +1,7 @@
 .parallax {
   background-image: url('https://user-images.githubusercontent.com/70382532/138322189-2db8df52-9dcb-40a0-88a8-c365466bd33d.gif');
   /* Adjust the min-height to a reasonable value that works for your layout */
-  min-height: 500px; /* Example value, adjust as needed */
+  min-height: 1000px; /* Example value, adjust as needed */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
