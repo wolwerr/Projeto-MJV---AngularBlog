@@ -17,46 +17,48 @@
 
 
 
-          <div class="row mt-5 mb-5">
-          <div div class="card" *ngIf="coment && card">
+        <div class="row mt-5 mb-5">
+          <div class="card" *ngIf="coment && card">
               <h3 class="text-center mb-4 text-monospace">Atualizar os dados:</h3>
-              <form [formGroup]="editForm" class="register-form">
-                <div class="form-field">
-                <label class="label-input">Name:</label>
-                <input type="text" formControlName="name" id="nome" class="form-control" value="{{ coment.name }}">
-              </div>
-              <form [formGroup]="editForm" class="register-form">
-                <div class="form-field">
-                <label class="label-input">Email:</label>
-                <input type="email" formControlName="email" id="email" class="form-control" value="{{ coment.email }}">
-                <span class="error"
-                *ngIf="editForm.controls.email.errors &&
-                editForm.controls.email.errors.email">
-                Digite um email válido</span>
-              </div>
-              <form [formGroup]="editForm" class="register-form">
-                <div class="form-field">
-                <label class="label-input">Password:</label>
-                <input type="password" formControlName="password" id="password" class="form-control" placeholder="Digite o seu password">
-                <span class="error"
-                *ngIf="editForm.controls.password.errors &&
-                editForm.controls.password.errors.maxlength ">
-                A senha deve ter no máximo 6 caracteres</span>
-                <span class="error"
-                *ngIf="editForm.controls.password.errors &&
-                editForm.controls.password.errors.minlength ">
-                A senha deve ter no mínimo 6 caracteres</span>
-              </div>
-              <form [formGroup]="editForm" class="register-form">
-              <div class="form-field">
-                <label class="label-input">Message:</label>
-                <textarea name="mensagem" id="mensagem" cols="30" rows="4" class="form-control" formControlName="message"
-                  placeholder="Digite a sua mensagem"></textarea>
-              </div>
-              <div class="d-flex justify-content-end">
-                <button type="submit" class="cadastrarPost" class="btn btn-outline-light w-50" [disabled]="editForm.invalid"  (click)="onSubmit()">Atualizar</button>
-              </div>
+              <form [formGroup]="editForm" class="register-form" (ngSubmit)="onSubmit()">
+                  <!-- Name Field -->
+                  <div class="form-field">
+                      <label class="label-input">Name:</label>
+                      <input type="text" formControlName="name" class="form-control">
+                  </div>
+                  
+                  <!-- Email Field -->
+                  <div class="form-field">
+                      <label class="label-input">Email:</label>
+                      <input type="email" formControlName="email" class="form-control">
+                      <!-- Error for Email -->
+                  </div>
+                  
+                  <!-- Password Field -->
+                  <div class="form-field">
+                      <label class="label-input">Password:</label>
+                      <input type="password" formControlName="password" class="form-control">
+                      <!-- Error for Password -->
+                  </div>
+                  
+                  <!-- Message Field -->
+                  <div class="form-field">
+                      <label class="label-input">Message:</label>
+                      <textarea formControlName="message" cols="30" rows="4" class="form-control"></textarea>
+                  </div>
+  
+                  <!-- Submit Button -->
+                  <div class="d-flex justify-content-end">
+                      <button type="submit" class="btn btn-outline-light w-50" [disabled]="editForm.invalid">Atualizar</button>
+                  </div>
               </form>
+          </div>
+      </div>
+  </div>
+            
+              
+          
+      
 
 
 

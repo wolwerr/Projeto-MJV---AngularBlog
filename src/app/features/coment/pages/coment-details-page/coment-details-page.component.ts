@@ -13,16 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ComentDetailsPageComponent implements OnInit {
 
-  // coment?: Coment;
-
-  // @Input()
-  // coment?: Coment;
-
-  @Input()
-  card: boolean = true;
-
-  mostrarBotoes: boolean = false;
-
+  coment: Coment;
+  editForm: UntypedFormGroup;
+  @Input() card: boolean = true;
 
   constructor(
     private comentService: ComentService,
@@ -36,42 +29,39 @@ export class ComentDetailsPageComponent implements OnInit {
     this.activedRoute.params.subscribe((params) => {
       this.comentService.getComentById(params.id).subscribe((coment) => {
         this.coment = coment;
+        this.initializeForm();
       });
     });
-    // this.authService.mostrarBotoesEmitter.subscribe(
-    //   mostrar => this.mostrarBotoes = mostrar
-    // );
+  }
+
+  initializeForm() {
+    this.editForm = new UntypedFormGroup({
+      name: new UntypedFormControl(this.coment.name, Validators.required),
+      message: new UntypedFormControl(this.coment.message, Validators.required),
+      email: new UntypedFormControl(this.coment.email, [Validators.required, Validators.email]),
+      password: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+      inclusionDate: new UntypedFormControl({ value: this.coment.inclusionDate, disabled: true })
+    });
   }
 
   remove() {
-    if (this.coment && this.coment.id) this.comentService.removeComent(this.coment.id)
-    .subscribe((result) => {
-      this.toastr.success('Comment deleted', 'Success');
-      this.router.navigateByUrl('/coment');
-    });
+    if (this.coment && this.coment.id) {
+      this.comentService.removeComent(this.coment.id)
+        .subscribe(() => {
+          this.toastr.success('Comment deleted', 'Success');
+          this.router.navigateByUrl('/coment');
+        });
+    }
   }
 
-  coment: Coment = this.comentService.getDefaultComent();
-
-
-  editForm = new UntypedFormGroup({
-    name: new UntypedFormControl('', [Validators.required]),
-    message: new UntypedFormControl('', [Validators.required]),
-    email: new UntypedFormControl('', [Validators.required, Validators.email]),
-    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
-    inclusionDate: new UntypedFormControl(this.coment.inclusionDate)
-  });
-
   onSubmit() {
-    const formValue = this.editForm.value;
-      this.coment.name = formValue.name;
-      this.coment.message = formValue.message;
-      this.coment.email = formValue.email;
-      this.coment.password = formValue.password;
-      this.comentService.updateComent(this.coment.id, this.coment).subscribe((result) => {
+    if (this.editForm.valid) {
+      const formValue = this.editForm.value;
+      const updatedComent = { ...this.coment, ...formValue };
+      this.comentService.updateComent(this.coment.id, updatedComent).subscribe(() => {
         this.toastr.success('Comment updated', 'Success');
         this.router.navigateByUrl('/coment');
       });
     }
+  }
 }
-
