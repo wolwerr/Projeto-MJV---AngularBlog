@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrlBackend: 'https://back-node-production-5c64.up.railway.app/',
+  baseUrlBackend: 'https://back-node-production-5c64.up.railway.app',
   baseUrlEmail: 'https://ms-email-production-6d12.up.railway.app/sending-email'
 };
 
