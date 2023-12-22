@@ -47,7 +47,7 @@
           <input type="password" formControlName="password" id="password" class="form-control" placeholder="Enter your 6-digit password">
           <span class="error"
           *ngIf="commentForm.controls.password.errors &&
-          commentForm.controls.password.errors.maxlength && commentForm.controls.password.errors.touched ">
+          commentForm.controls.password.errors.maxlength  ">
           The password must have a maximum of 6 characters</span>
           <span class="error"
           *ngIf="commentForm.controls.password.errors &&
