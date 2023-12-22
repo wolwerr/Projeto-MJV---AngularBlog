@@ -9,11 +9,35 @@ footer{
 
 }
 
-.social-network > li{
-  display:inline-flex;
-  justify-content:center;
+.social-network {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center; /* Centraliza os itens no contêiner */
   align-items: center;
+  padding: 0 10px; /* Adiciona um pouco de espaço nas laterais do contêiner */
 }
+
+.social-network > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px; /* Espaçamento inicial à direita de cada item */
+}
+
+.social-network > li:last-child {
+  margin-right: 0; /* Remove a margem do último item */
+}
+
+@media screen and (max-width: 600px) {
+  .social-network {
+    padding: 0 5px; /* Reduz o espaçamento lateral em telas menores */
+  }
+  .social-network > li {
+    margin-right: 10px; /* Reduz o espaçamento entre os ícones em telas menores */
+  }
+}
+
+
 
 #github,
 #instagram,
