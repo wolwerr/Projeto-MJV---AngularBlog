@@ -2,7 +2,7 @@
   <h1><a class="text-center mb-5 text-monospace" style="color: white" href="mailto:ricardo@dtmm.com.br">Contact</a></h1>
   <div class="col-md-8">
     <div>
-      <h3 class="text-center mb-4 text-monospace">Send your comment below:</h3>
+      <h3 class="text-center mb-4 text-monospace">Send your data below:</h3>
 
       <form [formGroup]="emailForm" class="register-form">
         <div class="form-field">
@@ -16,7 +16,7 @@
         <span class="error"
         *ngIf="emailForm.controls.email.errors &&
         emailForm.controls.email.errors.email">
-        Digite um email válido</span>
+        Enter a valid email address</span>
       </div>
       <form [formGroup]="emailForm" class="register-form">
         <div class="form-field">
@@ -25,7 +25,7 @@
         <span class="error"
         *ngIf="emailForm.controls.phone.errors &&
         emailForm.controls.phone.errors.maxlength ">
-        O telefone deve ter no máximo 20 caracteres</span>
+        The phone number has to be minus of 20 numbers</span>
         <span class="error"></span>
       </div>
       <form [formGroup]="emailForm" class="register-form">
