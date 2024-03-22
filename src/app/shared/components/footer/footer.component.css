@@ -42,7 +42,8 @@ footer{
 #github,
 #instagram,
 #tiktok,
-#linkedin{
+#linkedin,
+#youtube{
   font-size:2em;
   background-color: #18191f;
   color: #fff;
@@ -74,6 +75,9 @@ footer{
 #linkedin{
   animation-delay: 0.1s;
 }
+#youtube{
+  animation-delay: 0.1s;
+}
 
 @keyframes animate{
   from{
@@ -84,7 +88,7 @@ footer{
   }
 }
 
-#github, #instagram, #linkedin #tiktok{
+#github, #instagram, #linkedin, #tiktok, #youtube {
   color: white;
 }
 
