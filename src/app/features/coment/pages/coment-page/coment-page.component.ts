@@ -32,7 +32,7 @@ export class ComentComponent implements OnInit {
       name: ['', Validators.required],
       message: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      // password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       inclusionDate: [Date.now, Validators.required],
     });
   }
@@ -48,7 +48,7 @@ export class ComentComponent implements OnInit {
       this.comment.name = formValue.name;
       this.comment.message = formValue.message;
       this.comment.email = formValue.email;
-      this.comment.password = formValue.password;
+      // this.comment.password = formValue.password;
       this.comentService.createComent(this.comment).subscribe((result) => {
         this.toastr.success('Comment deleted', 'Success');
         window.location.reload();
