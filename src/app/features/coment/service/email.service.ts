@@ -12,7 +12,11 @@ export class EmailService {
   constructor(private http: HttpClient, private envService: EnvironmentService) { }
 
   enviarEmail(email: Email): Observable<unknown> {
-    return this.http.post<unknown>(`${this.envService.getBaseUrlEmail()}`, email);
+    const emailApiBaseUrl = this.envService.getBaseUrlEmail().replace(/\/+$/, '');
+    const fullUrl = `${emailApiBaseUrl}/sending-email`;
+    console.log('Enviando email para URL:', fullUrl);
+    console.log('Payload:', email);
+    return this.http.post<unknown>(fullUrl, email);
   }
 
 }

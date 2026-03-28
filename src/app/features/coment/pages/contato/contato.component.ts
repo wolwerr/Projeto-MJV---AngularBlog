@@ -33,9 +33,15 @@ export class ContatoComponent implements OnInit {
       this.email.emailTo = formValue.email;
       this.email.phone = formValue.phone;
       this.email.text = formValue.message;
-      this.emailService.enviarEmail(this.email).subscribe((result) => {
-        alert('Email sented');
-        window.location.reload();
+      this.emailService.enviarEmail(this.email).subscribe({
+        next: (result) => {
+          alert('Email enviado com sucesso!');
+          window.location.reload();
+        },
+        error: (error) => {
+          console.error('Erro ao enviar email:', error);
+          alert(`Erro ao enviar email: ${error.error?.error || error.message || 'Servidor indisponível'}\nVerifique se a API está ativa.`);
+        }
       });
     }
 }
