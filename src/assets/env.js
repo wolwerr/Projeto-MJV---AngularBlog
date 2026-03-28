@@ -1,0 +1,4 @@
+window.__env = {
+  "BASE_URL_BACKEND": "https://back-node-production-5c64.up.railway.app",
+  "BASE_URL_EMAIL": "https://ms-email-pyih.onrender.com"
+};

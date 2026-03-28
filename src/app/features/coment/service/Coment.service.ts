@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Coment } from '../models/Coment';
 import * as moment from 'moment';
-import { environment } from 'src/environments/environment';
+import { EnvironmentService } from '../../../services/environment.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,65 +20,54 @@ export class ComentService {
     }
   };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private envService: EnvironmentService) { }
 
   getDefaultComent(): Coment {
-    const dateToday = moment().format('YYYY/MM/DD');
-    return{
-      // id: this.generateNextId(),
-      name:'',
+    const dateToday: string = moment().format('YYYY/MM/DD');
+    return {
+      name: '',
       email: '',
       password: '',
-      message:'',
+      message: '',
       inclusionDate: dateToday,
       loggedIn: false
-    }
-
-    // const data = { email,
-    //               password:''
-    //             };
+    };
   }
   generateNextId(): number {
     throw new Error('Method not implemented.');
   }
 
-  getComent() {
-    return this.httpClient.get<Array<Coment>>(environment.baseUrlBackend, this.options);
+  getComent(): Observable<Array<Coment>> {
+    return this.httpClient.get<Array<Coment>>(this.envService.getBaseUrlBackend(), this.options);
   }
 
-  getComentByEmailAndPassword(email: string, password: string){
-    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}/${email}/${password}`)
+  getComentByEmailAndPassword(email: string, password: string): Observable<Coment> {
+    return this.httpClient.get<Coment>(`${this.envService.getBaseUrlBackend()}/${email}/${password}`);
   }
 
-  getComentById(id) {
-    return this.httpClient.get<Coment>(`${environment.baseUrlBackend}/${id}`, this.options);
+  getComentById(id: number): Observable<Coment> {
+    return this.httpClient.get<Coment>(`${this.envService.getBaseUrlBackend()}/${id}`, this.options);
   }
 
-  getComentByName(name: string) {
-    return this.coment.find((coment) => coment.name === name);
-  }
-
-  getComentsByFilterName(name: string) {
+  getComentsByFilterName(name: string): Array<Coment> {
     return this.coment.filter((coment) => coment.name.toUpperCase().search(name.toUpperCase()) > -1);
   }
 
-  getComentsByFilterId(id: number) {
-    const coment = this.getComentById(Number(id));
-    if(!coment) {
-      return [];
-    }
-    return [coment];
+  getComentsByFilterId(id: number): Observable<Array<Coment>> {
+    return this.getComentById(Number(id)).pipe(
+      map((coment) => (coment ? [coment] : []))
+    );
   }
 
-  createComent(coment: Coment) {
-    return this.httpClient.post(`${environment.baseUrlBackend}`, coment);
+  createComent(coment: Coment): Observable<Coment> {
+    return this.httpClient.post<Coment>(`${this.envService.getBaseUrlBackend()}`, coment);
   }
 
-  removeComent(id: number) {
-    return this.httpClient.delete<any>(`${environment.baseUrlBackend}/remove/${id}`, this.options);
+  removeComent(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.envService.getBaseUrlBackend()}/remove/${id}`, this.options);
   }
 
-  updateComent(id: number, coment: Coment) {
-    return this.httpClient.put<any>(`${environment.baseUrlBackend}/update/${id}`, coment, this.options);
+  updateComent(id: number, coment: Coment): Observable<any> {
+    return this.httpClient.put<any>(`${this.envService.getBaseUrlBackend()}/update/${id}`, coment, this.options);
   }
 }
